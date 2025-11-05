@@ -57,7 +57,7 @@ const Hero = () => {
           Get in Touch →
         </a>
        <a
-  href="/resume/Amutha_lakshmi_Resume.pdf"
+  href="/resume/Amutha_Lakshmi_Resume.pdf"
   target="_blank"
   rel="noopener noreferrer"
   download="Amutha_Lakshmi_Resume.pdf"
@@ -84,7 +84,7 @@ const Hero = () => {
   </a>
 
   <a
-    href="https://github.com/amutharaj0597"
+    href="https://github.com/amutha-lakshmi"
     target="_blank"
     rel="noreferrer"
     className="text-gray-400 hover:text-indigo-400 transition"
