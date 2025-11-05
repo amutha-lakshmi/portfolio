@@ -56,7 +56,7 @@ const Hero = () => {
         >
           Get in Touch →
         </a>
-       <a
+      <a
   href="/resume/Amutha_Lakshmi_Resume.pdf"
   target="_blank"
   rel="noopener noreferrer"
@@ -65,6 +65,7 @@ const Hero = () => {
 >
   Download Resume ⬇️
 </a>
+
 
       </motion.div>
 
