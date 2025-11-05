@@ -56,15 +56,14 @@ const Hero = () => {
         >
           Get in Touch →
         </a>
-      <a
-  href="/resume/Amutha_Lakshmi_Resume.pdf"
-  target="_blank"
-  rel="noopener noreferrer"
+    <a
+  href="/Amutha_Lakshmi_Resume.pdf"
   download="Amutha_Lakshmi_Resume.pdf"
   className="border border-white px-6 py-3 rounded-full font-medium hover:bg-gray-100 hover:text-black transition"
 >
   Download Resume ⬇️
 </a>
+
 
 
       </motion.div>
