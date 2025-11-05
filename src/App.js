@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Skills from "./components/Skills";
+import Projects from "./components/Projects";
+import Contact from "./components/Contact";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="bg-[#0A0F1C] text-white relative overflow-x-hidden scroll-smooth">
+      {/* Scroll Progress Bar */}
+      <div className="fixed top-0 left-0 h-[4px] bg-gradient-to-r from-indigo-500 to-pink-500 w-[var(--scroll)] z-50"></div>
+
+      <Navbar />
+      <Hero />
+      <About />
+      {/* Tech Stack Section */}
+    <section id="tech-stack">
+      <Skills />
+    </section>
+      <Projects />
+      <Contact />
+    </main>
   );
 }
 
