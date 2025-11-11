@@ -10,15 +10,13 @@ function App() {
   return (
     <main className="bg-[#0A0F1C] text-white relative overflow-x-hidden scroll-smooth">
       {/* Scroll Progress Bar */}
-      <div className="fixed top-0 left-0 h-[4px] bg-gradient-to-r from-indigo-500 to-pink-500 w-[var(--scroll)] z-50"></div>
+      <div className="fixed top-0 left-0 h-[4px] bg-gradient-to-r from-indigo-500 to-pink-500 w-[var(--scroll)] z-50" />
 
       <Navbar />
       <Hero />
       <About />
-      {/* Tech Stack Section */}
-    <section id="tech-stack">
+      {/* render Skills directly (it already has id="tech-stack") */}
       <Skills />
-    </section>
       <Projects />
       <Contact />
     </main>

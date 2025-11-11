@@ -1,110 +1,121 @@
-// src/components/Navbar.jsx
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
   { name: "Home", id: "home" },
   { name: "About", id: "about" },
-  { name: "Skils", id: "tech-stack" }, // ensure this id matches your section
+  { name: "Skills", id: "tech-stack" },
   { name: "Projects", id: "projects" },
   { name: "Contact", id: "contact" },
 ];
 
 const Navbar = () => {
   const [active, setActive] = useState("home");
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      document.documentElement.style.setProperty("--scroll", `${(scrollY / docHeight) * 100}vw`);
-
       navItems.forEach((item) => {
         const section = document.getElementById(item.id);
         if (section) {
           const rect = section.getBoundingClientRect();
-          if (rect.top <= 150 && rect.bottom >= 150) setActive(item.id);
+          if (rect.top <= 120 && rect.bottom >= 120) {
+            setActive(item.id);
+          }
         }
       });
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleClick = (id) => {
-    setActive(id);
+  const scrollToSection = (id) => {
     const section = document.getElementById(id);
     if (section) {
-      const offset = section.offsetTop - 80; // adjust for fixed navbar height
+      const offset = section.offsetTop - 70;
       window.scrollTo({ top: offset, behavior: "smooth" });
     }
-    setMenuOpen(false);
+    setOpen(false);
+  };
+
+  const handleResume = () => {
+    window.open("/Amutha_Lakshmi_Resume.pdf", "_blank");
+    setTimeout(() => {
+      const link = document.createElement("a");
+      link.href = "/Amutha_Lakshmi_Resume.pdf";
+      link.download = "Amutha_Lakshmi_Resume.pdf";
+      link.click();
+    }, 200);
+    setOpen(false);
   };
 
   return (
-    // full-width fixed bar; inner content is centered
     <motion.nav
-      initial={{ y: -30, opacity: 0 }}
+      initial={{ y: -25, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className="fixed top-5 left-0 right-0 z-50 pointer-events-none"
+      className="fixed top-5 left-0 right-0 flex justify-center z-[100] pointer-events-none"
     >
-      {/* inner container centers the visible pill and allows pointer events */}
-      <div className="mx-auto max-w-full flex justify-center pointer-events-auto px-4">
-        <div className="bg-gray-900/70 backdrop-blur-lg border border-gray-700 rounded-full shadow-lg px-6 py-3 flex items-center z-50">
-          {/* Desktop Menu */}
-          <ul className="hidden md:flex space-x-6 text-sm font-medium text-gray-300">
-            {navItems.map((item) => (
-              <li key={item.id}>
-                <button
-                  onClick={() => handleClick(item.id)}
-                  className={`px-4 py-2 rounded-full transition-all duration-300 ${
-                    active === item.id
-                      ? "bg-gradient-to-r from-indigo-500 to-pink-500 text-white shadow-md"
-                      : "hover:text-indigo-400"
-                  }`}
-                >
-                  {item.name}
-                </button>
-              </li>
-            ))}
-          </ul>
+      {/* Desktop */}
+      <div className="hidden md:flex bg-gray-900/70 backdrop-blur-lg border border-gray-700 rounded-full shadow-lg px-6 py-3 space-x-6 pointer-events-auto">
+        {navItems.map((item) => (
+          <button
+            key={item.id}
+            onClick={() => scrollToSection(item.id)}
+            className={`px-4 py-1 rounded-full transition-all ${
+              active === item.id
+                ? "bg-gradient-to-r from-indigo-500 to-pink-500 text-white"
+                : "text-gray-300 hover:text-indigo-400"
+            }`}
+          >
+            {item.name}
+          </button>
+        ))}
 
-          {/* Mobile Menu Toggle */}
-          <div className="md:hidden flex items-center">
-            <button
-              className="text-gray-200 focus:outline-none"
-              onClick={() => setMenuOpen((s) => !s)}
-              aria-label="Open menu"
-            >
-              ☰
-            </button>
-          </div>
-        </div>
+        <button
+          onClick={handleResume}
+          className="px-4 py-1 rounded-full bg-gradient-to-r from-indigo-500 to-pink-500 text-white hover:opacity-90"
+        >
+          Resume
+        </button>
       </div>
 
-      {/* Mobile Dropdown (centered below the pill) */}
-      {menuOpen && (
-        <div className="fixed top-20 left-0 right-0 flex justify-center z-40 px-4">
-          <ul className="bg-gray-900/95 backdrop-blur-md rounded-xl border border-gray-700 shadow-xl py-4 px-6 space-y-3 text-center w-64">
-            {navItems.map((item) => (
-              <li key={item.id}>
+      {/* Mobile */}
+      <div className="md:hidden pointer-events-auto">
+        <button
+          onClick={() => setOpen(!open)}
+          className="px-6 py-2 rounded-full bg-gray-900/80 backdrop-blur-md border border-gray-700 shadow-lg text-white text-sm"
+        >
+          {open ? "Close Menu ▲" : "Menu ▼"}
+        </button>
+
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 8 }}
+              exit={{ opacity: 0, y: -8 }}
+              className="absolute top-16 left-1/2 -translate-x-1/2 bg-gray-900/95 border border-gray-700 backdrop-blur-xl rounded-xl shadow-xl p-4 w-60 text-center"
+            >
+              {navItems.map((item) => (
                 <button
-                  onClick={() => handleClick(item.id)}
-                  className={`block w-full py-2 rounded-full transition-all duration-200 ${
-                    active === item.id
-                      ? "bg-gradient-to-r from-indigo-500 to-pink-500 text-white"
-                      : "hover:text-indigo-400"
-                  }`}
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="block w-full py-2 text-gray-300 hover:text-indigo-400"
                 >
                   {item.name}
                 </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+              ))}
+
+              <button
+                onClick={handleResume}
+                className="block w-full mt-2 py-2 bg-gradient-to-r from-indigo-500 to-pink-500 text-white rounded-full"
+              >
+                Resume
+              </button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </motion.nav>
   );
 };

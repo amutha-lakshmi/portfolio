@@ -1,71 +1,92 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 
 const projects = [
   {
     title: "MemeHub",
-    desc: "A modern meme generator web app built with React and Firebase, allowing users to create, save, and share memes instantly.",
-    tech: ["React", "Firebase", "Tailwind"],
-    link: "https://memeshub-project.netlify.app/",
+    desc: "A meme generator web app allowing users to create, customize, download and share memes.",
+    tech: ["React.js", "CSS", "Firebase"],
+    img: "/project-images/memehub.png",
+    live: "https://memeshub-project.netlify.app/",
+    github: "https://github.com/amutha-lakshmi/Memeshub.git"
   },
   {
     title: "Medicine Reminder App",
-    desc: "A full-stack reminder application for scheduling and tracking medicine intake — includes notifications and doctor management features.",
-    tech: ["TypeScript", "Firebase", "Vite"],
-    link: "https://medication-management-tool.netlify.app/",
+    desc: "Medicine scheduling and tracking app with alerts and doctor management.",
+    tech: ["HTML", "CSS", "Firebase", "Vite"],
+    img: "/project-images/medicine.png",
+    live: "https://medication-management-tool.netlify.app/",
+    github: "https://github.com/amutha-lakshmi/medication-management-tool.git"
   },
   {
     title: "Travel Planner",
-    desc: "Plan your trips effortlessly with itinerary builder, map integration, expense tracking, and sharing options.",
-    tech: ["React", "Node.js", "MongoDB"],
-    link: "https://travelitenaryplanner.netlify.app/",
-  },
+    desc: "Plan trips, manage itinerary, expenses and collaborate with group members.",
+    tech: ["React.js", "Node.js", "Tailwind CSS", "Socket.IO", "Express.js", "MongoDB", "Multer"],
+    img: "/project-images/travel.png",
+    live: "https://travelitenaryplanner.netlify.app/",
+    github: "https://github.com/amutha-lakshmi/Travel-Itinerary-Planner.git"
+  }
 ];
 
 const Projects = () => {
   return (
-    <section id="projects" className="min-h-screen py-20 px-6 flex flex-col items-center">
+    <section id="projects" className="py-16 md:py-14 sm:py-10 px-6 flex flex-col items-center">
       <motion.h2
-        className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 mb-12"
+        className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 mb-10"
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
       >
         Projects
       </motion.h2>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        {projects.map((p, i) => (
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl w-full">
+        {projects.map((proj, i) => (
           <motion.div
             key={i}
-            className="relative bg-[#111827]/60 border border-gray-700 rounded-2xl p-6 hover:border-indigo-500/60 hover:shadow-[0_0_20px_rgba(99,102,241,0.4)] transition-all duration-300"
+            className="bg-[#111827]/60 backdrop-blur border border-gray-700 rounded-2xl overflow-hidden shadow-lg hover:border-indigo-500 transition"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.2 }}
+            transition={{ delay: i * 0.15 }}
           >
-            <div className="relative z-10">
-              <h3 className="text-xl font-semibold text-indigo-400 mb-3">
-                {p.title}
-              </h3>
-              <p className="text-gray-300 mb-4 leading-relaxed">{p.desc}</p>
+            {/* Screenshot */}
+            <img src={proj.img} alt={proj.title} className="w-full h-44 object-cover" />
+
+            <div className="p-6">
+              <h3 className="text-xl font-semibold text-indigo-300 mb-2">{proj.title}</h3>
+              <p className="text-gray-300 text-sm mb-4">{proj.desc}</p>
+
+              {/* Tech Tags */}
               <div className="flex flex-wrap gap-2 mb-5">
-                {p.tech.map((tech, idx) => (
+                {proj.tech.map((t, idx) => (
                   <span
                     key={idx}
-                    className="text-sm px-3 py-1 border border-indigo-500/40 text-indigo-300 rounded-full bg-indigo-500/10"
+                    className="text-xs px-3 py-1 rounded-full border border-indigo-400 text-indigo-300"
                   >
-                    {tech}
+                    {t}
                   </span>
                 ))}
               </div>
-              <a
-                href={p.link}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-medium text-indigo-400 hover:text-indigo-300 transition"
-              >
-                View Project →
-              </a>
+
+              {/* Always Visible Links */}
+              <div className="flex justify-between items-center">
+                <a
+                  href={proj.live}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-indigo-400 hover:text-indigo-300 flex items-center gap-2 text-sm"
+                >
+                  Live Demo <FaExternalLinkAlt />
+                </a>
+                <a
+                  href={proj.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-indigo-400 hover:text-indigo-300 flex items-center gap-2 text-sm"
+                >
+                  GitHub <FaGithub />
+                </a>
+              </div>
             </div>
           </motion.div>
         ))}

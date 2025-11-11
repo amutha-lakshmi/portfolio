@@ -1,14 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaReact, FaNode, FaGithub } from "react-icons/fa";
-import { 
-  SiExpress, SiMongodb, SiFirebase, SiTailwindcss, 
-  SiJavascript, SiTypescript, SiMysql, SiHtml5, SiCss3 
+import {
+  SiExpress, SiMongodb, SiFirebase, SiTailwindcss,
+  SiJavascript, SiTypescript, SiMysql, SiHtml5, SiCss3
 } from "react-icons/si";
 
 const skills = [
   { name: "React.js", icon: <FaReact />, desc: "Dynamic UI with reusable components" },
-  { name: "Node.js", icon: <FaNode />, desc: "REST API & backend services" },
+  { name: "Node.js",  icon: <FaNode />,  desc: "REST API & backend services" },
   { name: "Express.js", icon: <SiExpress />, desc: "Routing & middleware logic" },
   { name: "MongoDB", icon: <SiMongodb />, desc: "NoSQL database modeling" },
   { name: "Firebase", icon: <SiFirebase />, desc: "Auth + hosting + cloud DB" },
@@ -23,21 +23,25 @@ const skills = [
 
 const Skills = () => {
   return (
-    <section id="tech-stack" className="py-20 px-6 text-center">
+    <section
+      id="tech-stack"
+      // ↓ small top padding (so “About”→“Skills” gap is tight), normal bottom
+      className="px-6 pt-6 md:pt-8 pb-16 text-center"
+    >
       <motion.h2
-        className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-pink-300 mb-14"
+        className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-pink-300 mb-8"
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
       >
-        Tech Stack
+        Skills
       </motion.h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-        {skills.map((skill, index) => (
+        {skills.map((skill, i) => (
           <motion.div
-            key={index}
+            key={i}
             whileHover={{ scale: 1.04, y: -4 }}
-            className="bg-[#0f1220] border border-[#2a2f45] rounded-xl p-5 
+            className="bg-[#0f1220] border border-[#2a2f45] rounded-xl p-5
                        flex flex-col items-center text-center shadow-sm
                        hover:shadow-lg hover:border-indigo-400/50 transition-all duration-300"
           >

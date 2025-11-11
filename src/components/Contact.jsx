@@ -30,7 +30,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="min-h-screen flex flex-col justify-center items-center py-20 px-6"
+      className="flex flex-col justify-center items-center px-6 py-16 md:py-14 sm:py-10"
     >
       <motion.h2
         className="text-4xl font-bold text-indigo-400 mb-8"

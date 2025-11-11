@@ -5,10 +5,11 @@ const About = () => {
   return (
     <section
       id="about"
-      className="min-h-screen flex flex-col justify-center items-center px-6 py-20"
+      // ↓ reduced outside spacing (only section padding)
+      className="flex flex-col justify-center items-center px-6 pt-12 pb-6 md:pt-12 md:pb-6 sm:pt-8 sm:pb-4"
     >
       <motion.h2
-        className="text-4xl font-bold text-indigo-400 mb-8"
+        className="text-4xl font-bold text-indigo-400 mb-6"
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -17,7 +18,7 @@ const About = () => {
       </motion.h2>
 
       <motion.p
-        className="max-w-3xl text-center text-gray-300 text-lg leading-relaxed mb-6"
+        className="max-w-3xl text-center text-gray-300 text-lg leading-relaxed mb-5"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
@@ -31,7 +32,7 @@ const About = () => {
       </motion.p>
 
       <motion.p
-        className="max-w-3xl text-center text-gray-300 text-lg leading-relaxed mb-6"
+        className="max-w-3xl text-center text-gray-300 text-lg leading-relaxed mb-5"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ delay: 0.3 }}
@@ -43,7 +44,8 @@ const About = () => {
       </motion.p>
 
       <motion.p
-        className="max-w-3xl text-center text-lg text-indigo-300 font-medium"
+        // last paragraph has no bottom margin so section bottom shrinks
+        className="max-w-3xl text-center text-lg text-indigo-300 font-medium mb-0"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ delay: 0.4 }}

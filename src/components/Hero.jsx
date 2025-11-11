@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex flex-col justify-center items-center bg-[#0A0F1C] text-white text-center px-6 pt-32 md:pt-36"
+      className="min-h-screen flex flex-col justify-center items-center bg-[#0A0F1C] text-white text-center px-6 pt-28 md:pt-32 pb-6"
     >
       {/* Floating Glowing Image */}
       <motion.div
@@ -27,7 +27,7 @@ const Hero = () => {
       </motion.h1>
 
       <motion.h2
-        className="text-2xl md:text-3xl font-semibold text-gray-300 mb-6"
+        className="text-2xl md:text-3xl font-semibold text-gray-300 mb-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.4 }}
@@ -36,7 +36,7 @@ const Hero = () => {
       </motion.h2>
 
       <motion.p
-        className="max-w-2xl text-gray-400 mb-8 leading-relaxed"
+        className="max-w-2xl text-gray-400 mb-6 leading-relaxed"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6 }}
@@ -45,7 +45,7 @@ const Hero = () => {
       </motion.p>
 
       <motion.div
-        className="flex flex-wrap justify-center gap-4 mb-8"
+        className="flex flex-wrap justify-center gap-4 mb-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8 }}
@@ -56,42 +56,41 @@ const Hero = () => {
         >
           Get in Touch →
         </a>
-    <a
-  href="/Amutha_Lakshmi_Resume.pdf"
-  download="Amutha_Lakshmi_Resume.pdf"
-  className="border border-white px-6 py-3 rounded-full font-medium hover:bg-gray-100 hover:text-black transition"
->
-  Download Resume ⬇️
-</a>
 
-
-
+        <a
+          href="/Amutha_Lakshmi_Resume.pdf"
+          download="Amutha_Lakshmi_Resume.pdf"
+          className="border border-white px-6 py-3 rounded-full font-medium hover:bg-gray-100 hover:text-black transition"
+        >
+          Download Resume ⬇️
+        </a>
       </motion.div>
 
-<motion.div
-  className="flex justify-center gap-6 text-2xl"
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  transition={{ delay: 1 }}
->
-  <a
-    href="https://www.linkedin.com/in/amuthas/"
-    target="_blank"
-    rel="noreferrer"
-    className="text-gray-400 hover:text-indigo-400 transition"
-  >
-    <i className="fa-brands fa-linkedin"></i>
-  </a>
+      {/* Social Icons */}
+      <motion.div
+        className="flex justify-center gap-6 text-2xl mt-0 mb-0"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1 }}
+      >
+        <a
+          href="https://www.linkedin.com/in/amuthas/"
+          target="_blank"
+          rel="noreferrer"
+          className="text-gray-400 hover:text-indigo-400 transition"
+        >
+          <i className="fa-brands fa-linkedin"></i>
+        </a>
 
-  <a
-    href="https://github.com/amutha-lakshmi"
-    target="_blank"
-    rel="noreferrer"
-    className="text-gray-400 hover:text-indigo-400 transition"
-  >
-    <i className="fa-brands fa-github"></i>
-  </a>
-</motion.div>
+        <a
+          href="https://github.com/amutha-lakshmi"
+          target="_blank"
+          rel="noreferrer"
+          className="text-gray-400 hover:text-indigo-400 transition"
+        >
+          <i className="fa-brands fa-github"></i>
+        </a>
+      </motion.div>
 
     </section>
   );
