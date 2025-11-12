@@ -6,7 +6,7 @@ const projects = [
   {
     title: "MemeHub",
     desc: "A meme generator web app allowing users to create, customize, download and share memes.",
-    tech: ["React.js", "CSS", "Firebase"],
+    tech: ["HTML", "CSS", "Firebase", "Vite"],
     img: "/project-images/memehub.png",
     live: "https://memeshub-project.netlify.app/",
     github: "https://github.com/amutha-lakshmi/Memeshub.git"
@@ -14,7 +14,7 @@ const projects = [
   {
     title: "Medicine Reminder App",
     desc: "Medicine scheduling and tracking app with alerts and doctor management.",
-    tech: ["HTML", "CSS", "Firebase", "Vite"],
+    tech: ["React.js","HTML","CSS","Firebase","jsPDF & jspdf-autotable","Web Vitals"],
     img: "/project-images/medicine.png",
     live: "https://medication-management-tool.netlify.app/",
     github: "https://github.com/amutha-lakshmi/medication-management-tool.git"
@@ -44,19 +44,20 @@ const Projects = () => {
         {projects.map((proj, i) => (
           <motion.div
             key={i}
-            className="bg-[#111827]/60 backdrop-blur border border-gray-700 rounded-2xl overflow-hidden shadow-lg hover:border-indigo-500 transition"
+            className="bg-[#111827]/60 backdrop-blur border border-gray-700 rounded-2xl overflow-hidden shadow-lg hover:border-indigo-500 transition flex flex-col"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.15 }}
           >
-            {/* Screenshot */}
+            {/* Project Image */}
             <img src={proj.img} alt={proj.title} className="w-full h-44 object-cover" />
 
-            <div className="p-6">
+            {/* Project Content */}
+            <div className="p-6 flex flex-col flex-grow">
               <h3 className="text-xl font-semibold text-indigo-300 mb-2">{proj.title}</h3>
               <p className="text-gray-300 text-sm mb-4">{proj.desc}</p>
 
-              {/* Tech Tags */}
+              {/* Tech Stack */}
               <div className="flex flex-wrap gap-2 mb-5">
                 {proj.tech.map((t, idx) => (
                   <span
@@ -68,15 +69,15 @@ const Projects = () => {
                 ))}
               </div>
 
-              {/* Always Visible Links */}
-              <div className="flex justify-between items-center">
+              {/* Links (Centered & Fixed Alignment) */}
+              <div className="mt-auto flex justify-center gap-6 pt-4 border-t border-gray-700">
                 <a
                   href={proj.live}
                   target="_blank"
                   rel="noreferrer"
                   className="text-indigo-400 hover:text-indigo-300 flex items-center gap-2 text-sm"
                 >
-                  Live Demo <FaExternalLinkAlt />
+                  <FaExternalLinkAlt /> Live Demo
                 </a>
                 <a
                   href={proj.github}
@@ -84,7 +85,7 @@ const Projects = () => {
                   rel="noreferrer"
                   className="text-indigo-400 hover:text-indigo-300 flex items-center gap-2 text-sm"
                 >
-                  GitHub <FaGithub />
+                  <FaGithub /> GitHub
                 </a>
               </div>
             </div>
